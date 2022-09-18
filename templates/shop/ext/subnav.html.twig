@@ -1,0 +1,15 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb px-1 mb-2">
+        <li class="breadcrumb-item"><a href="{{ path("shop_index") }}">Magasin</a></li>
+        {% if category is defined %}
+            <li class="breadcrumb-item">
+                <a href="{{ path("shop_category", {category: category}) }}">{{ category }}</a>
+            </li>
+        {% endif %}
+        {% if product is defined %}
+            <li class="breadcrumb-item" aria-current="page">
+                <a href="{{ path("shop_product_view", {category: category, product: product.name}) }}">{{ product.name }}</a>
+            </li>
+        {% endif %}
+    </ol>
+</nav>

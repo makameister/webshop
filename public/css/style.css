@@ -1,0 +1,66 @@
+.bg-color {
+    background: #f6f5f5;
+}
+
+.bg-nav-color {
+    background: #f6f5f5;
+}
+
+.bg-footer {
+    background: #e3dfdf;
+}
+
+.nav-item {
+    font-size: 16px;
+}
+
+.menu-item {
+    letter-spacing: 3px;
+    font-weight: 900 !important;
+}
+
+.menu-item .active {
+    color: black;
+    /*text-decoration: underline;*/
+}
+
+
+.w-15 {
+    width: 15%;
+}
+
+.w-85 {
+    width: 85%;
+}
+
+.visible {
+    display: block;
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+    .w-sm-100 {
+        width: 100%;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    .w-sm-100 {
+        width: 80%;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+    .w-sm-100 {
+        width: 15%;
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    .w-sm-100 {
+        width: 15%;
+    }
+}

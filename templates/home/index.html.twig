@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Web shop{% endblock %}
+
+{% block body %}
+    <!-- Header - set the background image for the header in the line below -->
+    <header class="py-5 d-flex" style="background-image: url('https://unsplash.it/1900/1080?image=1076'); background-position: center; background-size: cover; background-repeat: no-repeat; height: 500px;">
+        <img class="img-fluid d-block mx-auto align-self-center" src="{{ asset('img/logo.svg')}}" alt="" height="200" width="200">
+    </header>
+
+    <!-- Content section -->
+    <section class="py-5">
+        <div class="container">
+            <h1>Section Heading</h1>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+        </div>
+    </section>
+
+    <!-- Image element - set the background image for the header in the line below -->
+    <div class="py-5" style="background-image: url('https://unsplash.it/1900/1080?image=1081'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+        <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+        <div style="height: 200px;"></div>
+    </div>
+
+    <!-- Content section -->
+    <section class="py-5">
+        <div class="container text-justify">
+            <h1 class="text-center">Section Heading</h1>
+            <div class="row">
+                <div class="col">
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+                </div>
+                <div class="col">
+                    <p class="lead">Lorem ipsum consectetur adipisicing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <header class="py-5" style="background-image: url('https://unsplash.it/1900/1080?image=1076'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+        <div style="height: 200px;"></div>
+    </header>
+
+    <!-- Content section -->
+    <section class="py-5">
+        <div class="container">
+            <h1>Section Heading</h1>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+        </div>
+    </section>
+{% endblock %}

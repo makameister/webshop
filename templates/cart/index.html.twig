@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block body %}
+    <div class="container mt-4 mb-5">
+        <div class="row">
+            <table class="table table-borderless">
+                <thead class="border-top border-bottom bg-footer">
+                <th>Produit :</th>
+                <th>Prix :</th>
+                <th>Quantité :</th>
+                <th>Total :</th>
+                <th></th>
+                </thead>
+                <tbody>
+                {% for item in cart.item %}
+                    <tr class="border-bottom bg-white">
+                        <td style="width: 20%">{{ item.product.name }}</td>
+                        <td style="width: 10%">{{ item.product.price }}</td>
+                        <td style="width: 20%">
+                            {{ item.quantity }}
+                            <a href="{{ path('cart_add', {id: item.product.id}) }}" class="btn btn-sm btn-success ml-3"><i class="fas fa-plus"></i></a>
+                            <a href="{{ path('cart_remove', {id: item.product.id}) }}" class="btn btn-sm btn-danger"><i class="fas fa-minus"></i></a>
+                        </td>
+                        <td style="width: 10%">{{ item.product.price * item.quantity }} $</td>
+                        <td style="width: 10%">
+                            <a href="{{ path('cart_delete', {id: item.product.id}) }}" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3" class="text-right">Sous total :</td>
+                    <td colspan="2">{{ cart.subTotal }} $</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-right">TVA :</td>
+                    <td colspan="2">{{ cart.port }} $</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-right">Total :</td>
+                    <td colspan="2">{{ cart.total }} $</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row mx-2 d-flex flex-row justify-content-end">
+            <a href="#" class="btn btn-primary mr-2">Payer</a>
+            <a href="{{ path("cart_erase") }}" class="btn btn-primary">Vider mon panier</a>
+        </div>
+    </div>
+{% endblock %}

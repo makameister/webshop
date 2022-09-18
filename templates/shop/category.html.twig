@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShopController!{% endblock %}
+
+{% block body %}
+    <div class="container-fluid d-flex flex-column flex-lg-row">
+        <div class="w-sm-100 mx-auto bg-footer">
+            <button class="btn btn-filter float-right" style="color: #bdb4b4; background-color: #807d7d"><i class="fas fa-angle-double-down"></i></button>
+        </div>
+        <div class="row order-0 px-5 py-5 py-lg-0 px-lg-3 mb-3 mb-lg-0 justify-content-center
+        w-sm-100 mx-auto mt-lg-3 div-filter bg-white border" style="display: none;">
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col-6 col-lg-12">{{ form_row(form.minPrice) }}</div>
+                <div class="col-6 col-lg-12">{{ form_row(form.maxPrice) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-12">{{ form_row(form.brand) }}</div>
+                <div class="col-12">{{ form_row(form.order) }}</div>
+            </div>
+            <div class="d-flex flex-row flex-lg-column justify-content-center">
+                <button type="submit" class="btn btn-primary mb-lg-2">Filtrer</button>
+                <a href="{{ path("shop_category", {"category": category}) }}" class="btn btn-primary ml-2 ml-lg-0">Nettoyer</a>
+            </div>
+            {{ form_end(form) }}
+        </div>
+        <div class="w-85 order-1 mx-auto">
+            {{ include('./shop/ext/subnav.html.twig') }}
+            <div class="row justify-content-start mx-auto mx-lg-0">
+                {% for product in products %}
+                    <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 mx-0 px-1 mb-1">
+                        <div class="card h-100">
+                            {% if product.image starts with 'https://' %}
+                                <img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt="card-miage">
+                            {% else %}
+                                <img class="card-img-top img-fluid"
+                                     src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="card-image">
+                            {% endif %}
+                            <div class="card-body overflow-hidden">
+                                <h5 class="card-title">
+                                    <a href="{{ path("shop_product_view", {"category": category, "product": product.name}) }}"
+                                       class="text-decoration-none">{{ product.name }}</a>
+                                </h5>
+                                <p class="text-muted">{{ product.price }} $</p>
+                                <p class="card-text text-wrap overflow-hidden small">{{ product.brand }}</p>
+                                <p class="card-text text-wrap overflow-hidden small">{{ product.description|raw }}</p>
+                            </div>
+                            <div class="card-footer justify-content-between px-2"></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row mx-4 mx-lg-2 p-4 justify-content-center justify-content-lg-end">
+        {{ knp_pagination_render(products) }}
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector(".btn-filter").addEventListener("click", function () {
+                let a = document.querySelector(".div-filter")
+                if (a.style.display === "block") {
+                    a.style.display = "none"
+                } else {
+                    a.style.display = "block"
+                }
+            })
+        })
+    </script>
+{% endblock %}

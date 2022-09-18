@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        {{ form_start(form) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+        <label for="departement">Departement</label>
+        <select id="departement" class="form-control departements" name="_departement"
+                data-target="#departement" data-source="/ajax/$id">
+            {% for departement in departements %}
+                <option value="{{ departement.id }}">{{ departement.nom }}</option>
+            {% endfor %}
+        </select>
+        {{ form_row(form.ville_naissance) }}
+        <button class="btn btn-block btn-primary">{{ button|default('Créer') }}</button>
+        {{ form_end(form) }}
+    </div>
+
+    <script>
+        document.getElementById('departement').addEventListener('change', load)
+        function load() {
+            let d = document.getElementById('departement')
+            let v = d.options[d.selectedIndex].value
+
+            let url = "/ajax?id=" + v
+
+            var xhttp = new XMLHttpRequest()
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText)
+                }
+            };
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+    </script>
+{% endblock %}
